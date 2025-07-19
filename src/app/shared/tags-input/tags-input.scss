@@ -1,0 +1,37 @@
+.tags-input {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  padding: 6px;
+  border-radius: 4px;
+  align-items: center;
+
+  input {
+    border: none;
+    flex: 1;
+    min-width: 120px;
+    padding: 4px;
+    outline: none;
+  }
+}
+
+.tag {
+  background-color: #1976d2;
+  color: white;
+  padding: 4px 8px;
+  margin: 2px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+
+  .remove-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1;
+  }
+}

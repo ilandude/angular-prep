@@ -1,0 +1,13 @@
+<div class="tags-input" (blur)="onTouched()">
+  <span *ngFor="let tag of tags; let i = index" class="tag">
+    {{ tag }}
+    <button type="button" class="remove-btn" (click)="removeTag(i)">×</button>
+  </span>
+
+  <input
+    [(ngModel)]="inputValue"
+    (keydown.enter)="addTag($event)"
+    placeholder="Add tag and press Enter"
+    type="text"
+  />
+</div>
