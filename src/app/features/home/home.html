@@ -2,17 +2,17 @@
 
  
  
- <mat-form-field appearance="fill" class="form-field">
+ <mat-form-field appearance="fill" class="form-field" appHoverShadow>
     <mat-label>Search Country</mat-label>
     <input matInput [formControl]="searchControl" placeholder="Type to search..." />
   </mat-form-field>
 
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+<form #formWrapper [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
     
   <mat-form-field  class="form-field">
     <mat-label>Name</mat-label>
-    <input matInput formControlName="name" />
+    <input matInput formControlName="name" appAutoFocus />
     <mat-error *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
       Name is required
     </mat-error>
@@ -41,7 +41,9 @@
 <mat-form-field appearance="fill" class="form-field">
   <mat-label>Country</mat-label>
   <mat-select formControlName="country">
-    <mat-option *ngFor="let c of countries$ | async" [value]="c">{{ c }}</mat-option>
+   <mat-option *ngFor="let c of countries$ | async | sortBy: customCompare; let i = index" [value]="i">
+  {{ c.name }}
+</mat-option>
   </mat-select>
   <mat-error *ngIf="form.controls['country'].invalid && form.controls['country'].touched">
     Please select a country
@@ -58,7 +60,7 @@
 
   <app-tags-input formControlName="tags"></app-tags-input>
 
-  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+  <button mat-raised-button color="primary" type="submit" [disabled]="false">
     Submit
   </button>
 </form>
