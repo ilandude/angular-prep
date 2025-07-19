@@ -1,10 +1,10 @@
-import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { FormsModule } from '@angular/forms';
-import {  provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {  HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { Loader } from './shared/loader/loader';
 
 @NgModule({
@@ -17,9 +17,9 @@ import { Loader } from './shared/loader/loader';
     FormsModule,
     BrowserModule,
     AppRoutingModule,
+    
   ],
-  providers: [
-    provideBrowserGlobalErrorListeners(),
+  providers: [   
      provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [App]
